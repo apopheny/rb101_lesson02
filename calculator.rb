@@ -18,7 +18,7 @@ num2 = Kernel.gets().chomp().to_i()
 
 Kernel.puts("Would you like to (1) add,(2) subtract, (3) multiply, or (4) divide?")
 operand = Kernel.gets().chomp().downcase()
-result = nil
+
 if operand == "1" || operand == "add"
     result = num1 + num2
 elsif operand == "2" || operand == "subtract"
@@ -26,7 +26,7 @@ elsif operand == "2" || operand == "subtract"
 elsif operand == "3" || operand == "multiply"
     result = num1 * num2
 elsif operand == "4" || operand == "divide"
-    result = num1 / num2
+    result = num1.to_f / num2.to_f
 else puts "That is not a valid operation"
 end
 
