@@ -1,10 +1,9 @@
-numbers = [19, 2, 3, 38, 3, 9, 0]
-saved_number = 0
+require "pry" # add this to use Pry
 
-numbers.each do |num|
-  next unless num > saved_number
+counter = 0
 
-  saved_number = num
+loop do
+  counter += 1
+  binding.pry
+  break if counter == 5
 end
-
-p saved_number

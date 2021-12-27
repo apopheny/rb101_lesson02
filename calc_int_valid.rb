@@ -1,20 +1,15 @@
-# Build a command line calculator program that does the following:
+# Better integer validation.
 
-# asks for two numbers
-# asks for the type of operation to perform: add, subtract, multiply or divide
-# displays the result
-
-# ask the user for two numbers
-# ask the user for an operation to perform
-# perform the operation on the two numbers
-# output the result
-
+# The current method of validating the input for a number is very weak. It's also not fully accurate, as you cannot enter a 0. Come up with a better way of validating input for integers.
+require "pry"
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 def valid_number?(entry)
-  entry.to_i != 0
+  original = entry
+  entry = entry.to_i.to_s
+  entry == original
 end
 
 def operation_to_message(operation)
@@ -49,7 +44,7 @@ result = nil
 loop do
   prompt('What is the first number?')
   loop do
-    num1 = Kernel.gets().chomp().to_i()
+    num1 = Kernel.gets().chomp()
     if valid_number?(num1)
       break
     else prompt("Hmmm... That doesn't seem to be a valid entry")
@@ -57,7 +52,7 @@ loop do
   end
   loop do
     prompt("What is the second number?")
-    num2 = Kernel.gets().chomp().to_i()
+    num2 = Kernel.gets().chomp()
     if valid_number?(num2)
       break
     else prompt("Hmmm... That doesn't seem to be a valid entry")
@@ -86,11 +81,11 @@ loop do
 
   result =  case operand
             when '1'
-              result = num1 + num2
+              result = num1.to_i + num2.to_i
             when '2'
-              result = num1 - num2
+              result = num1.to_i - num2.to_i
             when '3'
-              result = num1 * num2
+              result = num1.to_i * num2.to_i
             when '4'
               result = num1.to_f / num2.to_f
             end
