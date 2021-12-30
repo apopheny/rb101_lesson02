@@ -80,3 +80,76 @@ loop do
 end
 # exit main loop
 prompt("Thank you for using Mortgage Calculator!")
+
+
+=begin
+TOP
+start
+variables: 
+initialize monthly_pmt (monthly payment)
+initialize loan_total (loan total)
+initialize monthly_rate (monthly rate)
+initialize name (user name)
+initialize loan_value (amount lent)
+initialize apr (annual percentage rate)
+initialize loan_duration (length of loan in months)
+
+welcome
+get name
+*NAME VALIDATION validate that name is not empty
+save name to VAR name
+greet with VAR name
+START LOOP
+ask if they want to perform a mortgage calculation
+IF "no" exit
+	ELSE continue
+get loan amount
+INTEGER VALIDATION validate that loan amount is an integer
+save loan amount to VAR loan_value
+get apr as an integer
+INTEGER VALIDATION validate that loan amount is an integer
+save apr to VAR apr
+*MONTHLY INTEREST RATE CALCULATION convert apr to monthly interest rate
+save monthly interest rate to VAR monthly_rate
+get loan duration in months as an integer
+*INTEGER VALIDATION validate that loan durationis an integer
+save monthly payment to VAR loan_duration
+
+*CALCULATION perform calculation
+display VAR monthly_rate (monthly interest rate (solved))
+display VAR loan_duration (loan duration in months (solved))
+display VAR monthly_payment (monthly payment (solved))
+END LOOP
+say goodbye with name
+exit
+
+NAME VALIDATION
+loop
+is name empty?
+yes, prompt for name again
+no, return true and break
+end loop
+
+Y/N VALIDATION
+LOOP
+does entry.downcase begin with y || n?
+yes: true
+	break
+no: re-prompt for response
+END LOOP
+
+
+MONTHLY INTEREST RATE CALCULATION
+monthly_rate = apr / 12
+END
+
+INTEGER VALIDATION
+loop
+is int equal to int.to_i.to_s?
+no, prompt for number entry
+yes, return true and break
+end loop
+
+CALCULATION
+monthly_pmt = loan.to_f * (monthly_rate.to_f / (1 - (1 + monthly_rate.to_f)**(-loan_duration.to_i)))
+=end

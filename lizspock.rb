@@ -21,17 +21,38 @@ def short_input(shortstring)
   end
 end
 
+def rockwin?(other)
+  other == "lizard" || other == "scissors"
+end
+
+def paperwin?(other)
+  other == "rock" || other == "spock"
+end
+
+def scissorswin?(other)
+  other == "paper" || other == "lizard"
+end
+
+def lizardwin?(other)
+  other == "spock" || other == "paper"
+end
+
+def spockwin?(other)
+  other == "rock" || other == "scissors"
+end
+
 def win?(first, second)
-  (first == "rock" && second == "scissors") ||
-    (first == "rock" && second == "lizard") ||
-    (first == "paper" && second == "rock") ||
-    (first == "paper" && second == "spock") ||
-    (first == "scissors" && second == "paper") ||
-    (first == "scissors" && second == "lizard") ||
-    (first == "lizard" && second == "spock") ||
-    (first == "lizard" && second == "paper") ||
-    (first == "spock" && second == "rock") ||
-    (first == "spock" && second == "scissors")
+  if first == "rock" && second != "rock"
+    rockwin?(second)
+  elsif first == "paper" && second != "paper"
+    paperwin?(second)
+  elsif first == "scissors" && second != "scissors"
+    scissorswin?(second)
+  elsif first == "lizard" && second != "lizard"
+    lizardwin?(second)
+  elsif first == "spock" && second != "spock"
+    spockwin?(second)
+  end
 end
 
 def display_results(player, computer)
@@ -76,7 +97,7 @@ loop do
     prompt("The computer has won the set!")
   end
 
-  if playerwins == 3 || compwins == 3 
+  if playerwins == 3 || compwins == 3
     playerwins = 0
     compwins = 0
     prompt('Would you like to play again?')
